@@ -110,6 +110,3 @@ async def finish_def(message: types.Message, state: FSMContext):
     await state.finish()
     os.remove(path=f'{message.from_user.id}')
 
-
-def main():
-    print('CI/CD')
