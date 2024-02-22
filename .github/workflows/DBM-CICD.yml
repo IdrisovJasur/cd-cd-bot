@@ -1,4 +1,4 @@
-name: Github Actions CI/CD
+name: CI/CD
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 env:
   REPO_NAME: ${{ github.repository }}
-  CONTAINER_NAME: devops-journey
+  CONTAINER_NAME: DBM_COMPANY
   REGISTRY: ghcr.io
   SSH_HOST: ${{ secrets.SERVER_IP }}
   SSH_USER: ${{ secrets.SERVER_USERNAME }}
@@ -59,8 +59,9 @@ jobs:
           username: "${{ env.SSH_USER }}"
           key: "${{ env.SSH_KEY }}"
           script: |
-            echo ${{ secrets.GITHUB_TOKEN }} | docker login -u ${{ github.actor }} --password-stdin ${{ env.REGISTRY }}
-            docker pull "${{ env.REGISTRY }}/${{ env.REPO_NAME }}:${{ github.sha }}"
-            docker stop "${{ env.CONTAINER_NAME }}" || true
-            docker rm "${{ env.CONTAINER_NAME }}" || true
-            docker run -d --name "${{ env.CONTAINER_NAME }}" -p "${{ env.PORT }}" "${{ env.REGISTRY }}/${{ env.REPO_NAME }}:${{ github.sha }}"
+            ls -la
+#            echo ${{ secrets.GITHUB_TOKEN }} | docker login -u ${{ github.actor }} --password-stdin ${{ env.REGISTRY }}
+#            docker pull "${{ env.REGISTRY }}/${{ env.REPO_NAME }}:${{ github.sha }}"
+#            docker stop "${{ env.CONTAINER_NAME }}" || true
+#            docker rm "${{ env.CONTAINER_NAME }}" || true
+#            docker run -d --name "${{ env.CONTAINER_NAME }}" -p "${{ env.PORT }}" "${{ env.REGISTRY }}/${{ env.REPO_NAME }}:${{ github.sha }}"
