@@ -19,7 +19,7 @@ phone_regex = '^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'
 @dp.message_handler(CommandStart(), state='*')
 async def bot_start(message: types.Message, state: FSMContext):
     await message.answer(f"Ҳурматли фойдаланувчи,сиз бу бот орқали бизнинг"
-                         f" Електирик Мастер корхонамизга ариза юборишингиз мумкин!", reply_markup=menu)
+                         f" Електирик Мастер корхонамизга ариза юборишингиз мумкин!!!", reply_markup=menu)
     await state.finish()
 
 
